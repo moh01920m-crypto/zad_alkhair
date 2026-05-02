@@ -17,887 +17,245 @@
       --text-light: #5A7A9A;
       --gold: #F5C842;
       --drop: #4FB8E8;
+      --green-quran: #2E7D32;
+      --green-light: #4CAF50;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
+    body { font-family: 'Cairo', sans-serif; background: var(--off-white); color: var(--text); overflow-x: hidden; }
 
-    body {
-      font-family: 'Cairo', sans-serif;
-      background: var(--off-white);
-      color: var(--text);
-      overflow-x: hidden;
-    }
-
-    /* ===== NAVBAR ===== */
+    /* NAVBAR */
     nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      background: rgba(33, 118, 199, 0.97);
-      backdrop-filter: blur(10px);
-      padding: 14px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(33, 118, 199, 0.97); backdrop-filter: blur(10px);
+      padding: 14px 40px; display: flex; justify-content: space-between; align-items: center;
       box-shadow: 0 2px 20px rgba(33,118,199,0.3);
     }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: white;
-      font-size: 1.3rem;
-      font-weight: 800;
-      font-family: 'Tajawal', sans-serif;
-    }
-
-    .nav-logo .drop-icon {
-      font-size: 1.8rem;
-      animation: dropBounce 2s ease-in-out infinite;
-    }
-
-    @keyframes dropBounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-5px); }
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 28px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: rgba(255,255,255,0.88);
-      text-decoration: none;
-      font-size: 0.95rem;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
+    .nav-logo { display: flex; align-items: center; gap: 12px; color: white; font-size: 1.3rem; font-weight: 800; font-family: 'Tajawal', sans-serif; }
+    .nav-logo .drop-icon { font-size: 1.8rem; animation: dropBounce 2s ease-in-out infinite; }
+    @keyframes dropBounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
+    .nav-links { display: flex; gap: 22px; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.88); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
     .nav-links a:hover { color: var(--gold); }
 
-    /* ===== HERO ===== */
+    /* HERO */
     .hero {
       min-height: 100vh;
       background: linear-gradient(145deg, #1558A0 0%, #2176C7 45%, #3A8FDF 80%, #5ABFEE 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      padding-top: 80px;
+      display: flex; align-items: center; justify-content: center; text-align: center;
+      position: relative; overflow: hidden; padding-top: 80px;
     }
-
     .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
+      content: ''; position: absolute; inset: 0;
       background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='rgba(255,255,255,0.04)' stroke-width='1'/%3E%3C/svg%3E") repeat;
       background-size: 120px;
     }
-
-    .bubbles {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-    }
-
-    .bubble {
-      position: absolute;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.07);
-      animation: rise linear infinite;
-    }
-
-    @keyframes rise {
-      0% { transform: translateY(110vh) scale(0.5); opacity: 0; }
-      10% { opacity: 1; }
-      90% { opacity: 1; }
-      100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
-    }
-
-    .bubble:nth-child(1) { width: 60px; height: 60px; left: 10%; animation-duration: 8s; animation-delay: 0s; }
-    .bubble:nth-child(2) { width: 30px; height: 30px; left: 25%; animation-duration: 11s; animation-delay: 2s; }
-    .bubble:nth-child(3) { width: 80px; height: 80px; left: 40%; animation-duration: 9s; animation-delay: 1s; }
-    .bubble:nth-child(4) { width: 20px; height: 20px; left: 60%; animation-duration: 12s; animation-delay: 3s; }
-    .bubble:nth-child(5) { width: 50px; height: 50px; left: 75%; animation-duration: 10s; animation-delay: 0.5s; }
-    .bubble:nth-child(6) { width: 40px; height: 40px; left: 88%; animation-duration: 7s; animation-delay: 4s; }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 720px;
-      padding: 0 20px;
-    }
-
-    .hero-badge {
-      display: inline-block;
-      background: rgba(255,255,255,0.15);
-      border: 1px solid rgba(255,255,255,0.3);
-      color: white;
-      padding: 8px 22px;
-      border-radius: 50px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      margin-bottom: 28px;
-      backdrop-filter: blur(5px);
-      animation: fadeDown 0.8s ease both;
-    }
-
-    @keyframes fadeDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .hero-logo {
-      width: 140px;
-      height: 140px;
-      border-radius: 30px;
-      margin: 0 auto 28px;
-      display: block;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.25);
-      animation: fadeUp 0.9s ease 0.2s both;
-      border: 3px solid rgba(255,255,255,0.2);
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .hero h1 {
-      font-family: 'Tajawal', sans-serif;
-      font-size: clamp(2.5rem, 6vw, 4rem);
-      color: white;
-      font-weight: 900;
-      line-height: 1.2;
-      margin-bottom: 18px;
-      animation: fadeUp 0.9s ease 0.3s both;
-    }
-
+    .bubbles { position: absolute; inset: 0; pointer-events: none; }
+    .bubble { position: absolute; border-radius: 50%; background: rgba(255,255,255,0.07); animation: rise linear infinite; }
+    @keyframes rise { 0%{transform:translateY(110vh) scale(0.5);opacity:0} 10%{opacity:1} 90%{opacity:1} 100%{transform:translateY(-10vh) scale(1.2);opacity:0} }
+    .bubble:nth-child(1){width:60px;height:60px;left:10%;animation-duration:8s;animation-delay:0s}
+    .bubble:nth-child(2){width:30px;height:30px;left:25%;animation-duration:11s;animation-delay:2s}
+    .bubble:nth-child(3){width:80px;height:80px;left:40%;animation-duration:9s;animation-delay:1s}
+    .bubble:nth-child(4){width:20px;height:20px;left:60%;animation-duration:12s;animation-delay:3s}
+    .bubble:nth-child(5){width:50px;height:50px;left:75%;animation-duration:10s;animation-delay:0.5s}
+    .bubble:nth-child(6){width:40px;height:40px;left:88%;animation-duration:7s;animation-delay:4s}
+    .hero-content { position: relative; z-index: 2; max-width: 720px; padding: 0 20px; }
+    .hero-badge { display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: white; padding: 8px 22px; border-radius: 50px; font-size: 0.9rem; font-weight: 600; margin-bottom: 28px; backdrop-filter: blur(5px); animation: fadeDown 0.8s ease both; }
+    @keyframes fadeDown { from{opacity:0;transform:translateY(-20px)} to{opacity:1;transform:translateY(0)} }
+    .hero-logo { width: 140px; height: 140px; border-radius: 30px; margin: 0 auto 28px; display: block; box-shadow: 0 20px 60px rgba(0,0,0,0.25); animation: fadeUp 0.9s ease 0.2s both; border: 3px solid rgba(255,255,255,0.2); }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+    .hero h1 { font-family: 'Tajawal', sans-serif; font-size: clamp(2.5rem,6vw,4rem); color: white; font-weight: 900; line-height: 1.2; margin-bottom: 18px; animation: fadeUp 0.9s ease 0.3s both; }
     .hero h1 span { color: var(--gold); }
-
-    .hero p {
-      font-size: 1.15rem;
-      color: rgba(255,255,255,0.85);
-      line-height: 1.8;
-      max-width: 580px;
-      margin: 0 auto 36px;
-      animation: fadeUp 0.9s ease 0.4s both;
-    }
-
-    .hero-btns {
-      display: flex;
-      gap: 14px;
-      justify-content: center;
-      flex-wrap: wrap;
-      animation: fadeUp 0.9s ease 0.5s both;
-    }
-
-    .btn-primary {
-      background: var(--gold);
-      color: var(--text);
-      padding: 14px 32px;
-      border-radius: 12px;
-      font-size: 1rem;
-      font-weight: 700;
-      border: none;
-      cursor: pointer;
-      text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 6px 20px rgba(245,200,66,0.4);
-    }
-
+    .hero p { font-size: 1.15rem; color: rgba(255,255,255,0.85); line-height: 1.8; max-width: 580px; margin: 0 auto 36px; animation: fadeUp 0.9s ease 0.4s both; }
+    .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; animation: fadeUp 0.9s ease 0.5s both; }
+    .btn-primary { background: var(--gold); color: var(--text); padding: 14px 32px; border-radius: 12px; font-size: 1rem; font-weight: 700; border: none; cursor: pointer; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 6px 20px rgba(245,200,66,0.4); }
     .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(245,200,66,0.5); }
-
-    .btn-outline {
-      background: transparent;
-      color: white;
-      padding: 14px 32px;
-      border-radius: 12px;
-      font-size: 1rem;
-      font-weight: 700;
-      border: 2px solid rgba(255,255,255,0.4);
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-
+    .btn-outline { background: transparent; color: white; padding: 14px 32px; border-radius: 12px; font-size: 1rem; font-weight: 700; border: 2px solid rgba(255,255,255,0.4); cursor: pointer; text-decoration: none; transition: all 0.2s; }
     .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: white; }
+    .wave { position: absolute; bottom: 0; left: 0; right: 0; }
 
-    .wave {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-    }
-
-    /* ===== SECTIONS ===== */
-    section {
-      padding: 90px 20px;
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .section-tag {
-      display: inline-block;
-      background: rgba(33,118,199,0.1);
-      color: var(--blue);
-      padding: 6px 18px;
-      border-radius: 50px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      margin-bottom: 14px;
-      border: 1px solid rgba(33,118,199,0.2);
-    }
-
-    .section-title {
-      font-family: 'Tajawal', sans-serif;
-      font-size: clamp(1.8rem, 4vw, 2.6rem);
-      font-weight: 900;
-      color: var(--text);
-      margin-bottom: 14px;
-      line-height: 1.3;
-    }
-
+    /* SECTIONS */
+    section { padding: 90px 20px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-tag { display: inline-block; background: rgba(33,118,199,0.1); color: var(--blue); padding: 6px 18px; border-radius: 50px; font-size: 0.85rem; font-weight: 700; margin-bottom: 14px; border: 1px solid rgba(33,118,199,0.2); }
+    .section-title { font-family: 'Tajawal', sans-serif; font-size: clamp(1.8rem,4vw,2.6rem); font-weight: 900; color: var(--text); margin-bottom: 14px; line-height: 1.3; }
     .section-title span { color: var(--blue); }
+    .section-sub { color: var(--text-light); font-size: 1.05rem; line-height: 1.8; max-width: 620px; }
 
-    .section-sub {
-      color: var(--text-light);
-      font-size: 1.05rem;
-      line-height: 1.8;
-      max-width: 620px;
-    }
+    /* ABOUT */
+    #about { background: white; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .about-card { background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%); border-radius: 28px; padding: 50px 40px; text-align: center; color: white; position: relative; overflow: hidden; box-shadow: 0 20px 60px rgba(33,118,199,0.35); }
+    .about-card::before { content:''; position:absolute; top:-40px; left:-40px; width:160px; height:160px; border-radius:50%; background:rgba(255,255,255,0.07); }
+    .about-card::after { content:''; position:absolute; bottom:-30px; right:-30px; width:120px; height:120px; border-radius:50%; background:rgba(255,255,255,0.05); }
+    .about-card .big-icon { font-size: 5rem; margin-bottom: 20px; display: block; position: relative; z-index: 1; }
+    .about-card h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 12px; position: relative; z-index: 1; }
+    .about-card p { font-size: 1rem; line-height: 1.7; opacity: 0.9; position: relative; z-index: 1; }
+    .stats-row { display: flex; gap: 16px; margin-top: 20px; }
+    .stat-box { flex: 1; background: var(--off-white); border-radius: 16px; padding: 20px 16px; text-align: center; border: 1px solid rgba(33,118,199,0.1); }
+    .stat-box .num { font-family: 'Tajawal', sans-serif; font-size: 1.8rem; font-weight: 900; color: var(--blue); display: block; }
+    .stat-box .label { font-size: 0.82rem; color: var(--text-light); font-weight: 600; }
+    .about-text .features { list-style: none; margin-top: 28px; display: flex; flex-direction: column; gap: 16px; }
+    .about-text .features li { display: flex; align-items: flex-start; gap: 14px; font-size: 0.98rem; color: var(--text); line-height: 1.6; }
+    .about-text .features li .icon { width: 36px; height: 36px; min-width: 36px; border-radius: 10px; background: rgba(33,118,199,0.1); display: flex; align-items: center; justify-content: center; font-size: 1rem; color: var(--blue); }
 
-    /* ===== ABOUT ===== */
-    #about {
-      background: white;
-    }
+    /* TRANSFER */
+    .transfer-banner { background: linear-gradient(135deg, #1A2E42 0%, #2E4A6A 100%); border-radius: 20px; padding: 28px 36px; margin-top: 28px; display: flex; align-items: center; gap: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+    .transfer-banner .t-icon { font-size: 2.5rem; min-width: 50px; text-align: center; }
+    .transfer-banner .t-info { flex: 1; }
+    .transfer-banner .t-info .t-label { font-size: 0.88rem; color: rgba(255,255,255,0.65); font-weight: 600; margin-bottom: 6px; }
+    .transfer-banner .t-info .t-number { font-family: 'Tajawal', sans-serif; font-size: 1.7rem; font-weight: 900; color: var(--gold); letter-spacing: 2px; direction: ltr; display: inline-block; }
+    .transfer-banner .t-info .t-note { font-size: 0.82rem; color: rgba(255,255,255,0.5); margin-top: 4px; }
+    .copy-btn { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 10px 20px; border-radius: 10px; font-size: 0.88rem; font-weight: 700; cursor: pointer; transition: all 0.2s; white-space: nowrap; font-family: 'Cairo', sans-serif; }
+    .copy-btn:hover { background: rgba(255,255,255,0.2); }
+    .copy-btn.copied { background: #25D366; border-color: #25D366; }
 
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
+    /* DONATE */
+    #donate { background: var(--off-white); }
+    .donate-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 50px; }
+    .step-card { background: white; border-radius: 20px; padding: 36px 28px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.06); position: relative; transition: transform 0.3s, box-shadow 0.3s; border: 1px solid rgba(33,118,199,0.08); }
+    .step-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(33,118,199,0.15); }
+    .step-num { position: absolute; top: -16px; right: 50%; transform: translateX(50%); width: 36px; height: 36px; border-radius: 50%; background: var(--blue); color: white; font-weight: 900; font-size: 1rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(33,118,199,0.4); }
+    .step-icon { font-size: 3rem; margin: 10px 0 18px; display: block; }
+    .step-card h3 { font-size: 1.1rem; font-weight: 800; color: var(--text); margin-bottom: 10px; }
+    .step-card p { font-size: 0.92rem; color: var(--text-light); line-height: 1.7; }
+    .price-highlight { display: inline-block; background: linear-gradient(135deg, var(--blue), var(--sky)); color: white; padding: 6px 18px; border-radius: 30px; font-weight: 800; font-size: 1rem; margin-top: 10px; }
 
-    .about-visual {
-      position: relative;
-    }
+    /* TARGETS */
+    #targets { background: white; }
+    .targets-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; margin-top: 50px; }
+    .target-card { background: var(--off-white); border-radius: 20px; padding: 30px 18px; text-align: center; border: 2px solid transparent; transition: all 0.3s; }
+    .target-card:hover { border-color: var(--blue); background: white; transform: translateY(-4px); box-shadow: 0 12px 30px rgba(33,118,199,0.12); }
+    .target-card .t-icon { font-size: 3rem; display: block; margin-bottom: 14px; }
+    .target-card h4 { font-size: 0.98rem; font-weight: 800; color: var(--text); }
 
-    .about-card {
-      background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%);
-      border-radius: 28px;
-      padding: 50px 40px;
-      text-align: center;
-      color: white;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 20px 60px rgba(33,118,199,0.35);
-    }
-
-    .about-card::before {
-      content: '';
-      position: absolute;
-      top: -40px; left: -40px;
-      width: 160px; height: 160px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.07);
-    }
-
-    .about-card::after {
-      content: '';
-      position: absolute;
-      bottom: -30px; right: -30px;
-      width: 120px; height: 120px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.05);
-    }
-
-    .about-card .big-icon {
-      font-size: 5rem;
-      margin-bottom: 20px;
-      display: block;
-      position: relative;
-      z-index: 1;
-    }
-
-    .about-card h3 {
-      font-size: 1.4rem;
-      font-weight: 800;
-      margin-bottom: 12px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .about-card p {
-      font-size: 1rem;
-      line-height: 1.7;
-      opacity: 0.9;
-      position: relative;
-      z-index: 1;
-    }
-
-    .stats-row {
-      display: flex;
-      gap: 16px;
-      margin-top: 20px;
-    }
-
-    .stat-box {
-      flex: 1;
-      background: var(--off-white);
-      border-radius: 16px;
-      padding: 20px 16px;
-      text-align: center;
-      border: 1px solid rgba(33,118,199,0.1);
-    }
-
-    .stat-box .num {
-      font-family: 'Tajawal', sans-serif;
-      font-size: 1.8rem;
-      font-weight: 900;
-      color: var(--blue);
-      display: block;
-    }
-
-    .stat-box .label {
-      font-size: 0.82rem;
-      color: var(--text-light);
-      font-weight: 600;
-    }
-
-    .about-text .features {
-      list-style: none;
-      margin-top: 28px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .about-text .features li {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      font-size: 0.98rem;
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    .about-text .features li .icon {
-      width: 36px;
-      height: 36px;
-      min-width: 36px;
-      border-radius: 10px;
-      background: rgba(33,118,199,0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      color: var(--blue);
-    }
-
-    /* ===== DONATE ===== */
-    #donate {
-      background: var(--off-white);
-    }
-
-    .donate-steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 50px;
-    }
-
-    .step-card {
-      background: white;
-      border-radius: 20px;
-      padding: 36px 28px;
-      text-align: center;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-      position: relative;
-      transition: transform 0.3s, box-shadow 0.3s;
-      border: 1px solid rgba(33,118,199,0.08);
-    }
-
-    .step-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 40px rgba(33,118,199,0.15);
-    }
-
-    .step-num {
-      position: absolute;
-      top: -16px;
-      right: 50%;
-      transform: translateX(50%);
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: var(--blue);
-      color: white;
-      font-weight: 900;
-      font-size: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 12px rgba(33,118,199,0.4);
-    }
-
-    .step-icon {
-      font-size: 3rem;
-      margin: 10px 0 18px;
-      display: block;
-    }
-
-    .step-card h3 {
-      font-size: 1.1rem;
-      font-weight: 800;
-      color: var(--text);
-      margin-bottom: 10px;
-    }
-
-    .step-card p {
-      font-size: 0.92rem;
-      color: var(--text-light);
-      line-height: 1.7;
-    }
-
-    .price-highlight {
-      display: inline-block;
-      background: linear-gradient(135deg, var(--blue), var(--sky));
-      color: white;
-      padding: 6px 18px;
-      border-radius: 30px;
-      font-weight: 800;
-      font-size: 1rem;
-      margin-top: 10px;
-    }
-
-    /* ===== TARGETS ===== */
-    #targets {
-      background: white;
-    }
-
-    .targets-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 20px;
-      margin-top: 50px;
-    }
-
-    .target-card {
-      background: var(--off-white);
-      border-radius: 20px;
-      padding: 30px 18px;
-      text-align: center;
-      border: 2px solid transparent;
-      transition: all 0.3s;
-      cursor: default;
-    }
-
-    .target-card:hover {
-      border-color: var(--blue);
-      background: white;
-      transform: translateY(-4px);
-      box-shadow: 0 12px 30px rgba(33,118,199,0.12);
-    }
-
-    .target-card .t-icon {
-      font-size: 3rem;
-      display: block;
-      margin-bottom: 14px;
-    }
-
-    .target-card h4 {
-      font-size: 0.98rem;
-      font-weight: 800;
-      color: var(--text);
-    }
-
-    /* ===== WHATSAPP SENDER ===== */
-    #whatsapp {
-      background: linear-gradient(135deg, #1558A0 0%, #2176C7 100%);
-      position: relative;
-      overflow: hidden;
-    }
-
-    #whatsapp::before {
-      content: '💧';
-      position: absolute;
-      font-size: 200px;
-      opacity: 0.04;
-      top: -40px;
-      left: -40px;
-      transform: rotate(-20deg);
-    }
-
+    /* WHATSAPP */
+    #whatsapp { background: linear-gradient(135deg, #1558A0 0%, #2176C7 100%); position: relative; overflow: hidden; }
+    #whatsapp::before { content: '💧'; position: absolute; font-size: 200px; opacity: 0.04; top: -40px; left: -40px; transform: rotate(-20deg); }
     #whatsapp .section-tag { background: rgba(255,255,255,0.15); color: white; border-color: rgba(255,255,255,0.2); }
     #whatsapp .section-title { color: white; }
     #whatsapp .section-title span { color: var(--gold); }
     #whatsapp .section-sub { color: rgba(255,255,255,0.8); }
-
-    .wa-box {
-      background: white;
-      border-radius: 24px;
-      padding: 44px;
-      max-width: 620px;
-      margin: 44px auto 0;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.2);
-    }
-
-    .wa-box label {
-      display: block;
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 10px;
-    }
-
-    .qty-selector {
-      display: flex;
-      align-items: center;
-      gap: 0;
-      border: 2px solid rgba(33,118,199,0.25);
-      border-radius: 14px;
-      overflow: hidden;
-      margin-bottom: 20px;
-    }
-
-    .qty-btn {
-      width: 52px;
-      height: 52px;
-      background: rgba(33,118,199,0.08);
-      border: none;
-      font-size: 1.4rem;
-      color: var(--blue);
-      cursor: pointer;
-      transition: background 0.2s;
-      font-weight: 700;
-    }
-
+    .donation-tabs { display: flex; margin-bottom: 0; border-radius: 18px 18px 0 0; overflow: hidden; max-width: 620px; margin: 44px auto 0; }
+    .tab-btn { flex: 1; padding: 16px 20px; border: none; font-family: 'Cairo', sans-serif; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.25s; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .tab-btn.water { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.7); border-bottom: 3px solid transparent; }
+    .tab-btn.water.active { background: white; color: var(--blue); border-bottom: 3px solid var(--blue); }
+    .tab-btn.quran { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.7); border-bottom: 3px solid transparent; }
+    .tab-btn.quran.active { background: white; color: var(--green-quran); border-bottom: 3px solid var(--green-quran); }
+    .wa-box { background: white; border-radius: 0 0 24px 24px; padding: 44px; max-width: 620px; margin: 0 auto; box-shadow: 0 30px 80px rgba(0,0,0,0.2); }
+    .wa-panel { display: none; }
+    .wa-panel.active { display: block; }
+    .wa-box label { display: block; font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 10px; }
+    .qty-selector { display: flex; align-items: center; border: 2px solid rgba(33,118,199,0.25); border-radius: 14px; overflow: hidden; margin-bottom: 20px; }
+    .qty-selector.quran-style { border-color: rgba(46,125,50,0.3); }
+    .qty-btn { width: 52px; height: 52px; background: rgba(33,118,199,0.08); border: none; font-size: 1.4rem; color: var(--blue); cursor: pointer; transition: background 0.2s; font-weight: 700; }
     .qty-btn:hover { background: rgba(33,118,199,0.15); }
-
-    .qty-input {
-      flex: 1;
-      border: none;
-      text-align: center;
-      font-size: 1.3rem;
-      font-weight: 800;
-      color: var(--text);
-      font-family: 'Tajawal', sans-serif;
-      outline: none;
-      padding: 8px;
-    }
-
-    .price-preview {
-      background: rgba(33,118,199,0.07);
-      border-radius: 12px;
-      padding: 18px 22px;
-      margin-bottom: 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border: 1px solid rgba(33,118,199,0.12);
-    }
-
+    .qty-btn.green { color: var(--green-quran); background: rgba(46,125,50,0.08); }
+    .qty-btn.green:hover { background: rgba(46,125,50,0.15); }
+    .qty-input { flex: 1; border: none; text-align: center; font-size: 1.3rem; font-weight: 800; color: var(--text); font-family: 'Tajawal', sans-serif; outline: none; padding: 8px; }
+    .price-preview { background: rgba(33,118,199,0.07); border-radius: 12px; padding: 18px 22px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; border: 1px solid rgba(33,118,199,0.12); }
+    .price-preview.green-bg { background: rgba(46,125,50,0.07); border-color: rgba(46,125,50,0.15); }
     .price-preview .label { font-size: 0.95rem; color: var(--text-light); font-weight: 600; }
     .price-preview .total { font-size: 1.4rem; font-weight: 900; color: var(--blue); font-family: 'Tajawal', sans-serif; }
-
-    .wa-send-btn {
-      width: 100%;
-      padding: 16px;
-      background: #25D366;
-      color: white;
-      border: none;
-      border-radius: 14px;
-      font-size: 1.1rem;
-      font-weight: 800;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      transition: transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 6px 20px rgba(37,211,102,0.4);
-      font-family: 'Cairo', sans-serif;
-    }
-
+    .price-preview .total.green { color: var(--green-quran); }
+    .wa-send-btn { width: 100%; padding: 16px; background: #25D366; color: white; border: none; border-radius: 14px; font-size: 1.1rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 6px 20px rgba(37,211,102,0.4); font-family: 'Cairo', sans-serif; }
     .wa-send-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(37,211,102,0.5); }
+    .quran-info-box { background: rgba(46,125,50,0.06); border: 1px solid rgba(46,125,50,0.2); border-radius: 12px; padding: 16px 20px; margin-bottom: 20px; font-size: 0.9rem; color: var(--green-quran); font-weight: 600; line-height: 1.7; }
 
-    /* ===== REVIEWS ===== */
-    #reviews {
-      background: var(--off-white);
-    }
-
-    .reviews-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-      margin-top: 50px;
-    }
-
-    .review-card {
-      background: white;
-      border-radius: 20px;
-      padding: 28px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.05);
-      border: 1px solid rgba(0,0,0,0.05);
-    }
-
-    .review-stars {
-      color: #FFC107;
-      font-size: 1.1rem;
-      margin-bottom: 12px;
-    }
-
-    .review-text {
-      font-size: 0.95rem;
-      color: var(--text);
-      line-height: 1.7;
-      margin-bottom: 18px;
-    }
-
-    .reviewer {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .reviewer-avatar {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--blue), var(--sky));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-weight: 800;
-      font-size: 1rem;
-    }
-
-    .reviewer-name { font-weight: 700; font-size: 0.95rem; color: var(--text); }
-    .reviewer-date { font-size: 0.8rem; color: var(--text-light); }
-
-    /* ===== REVIEW FORM ===== */
-    .review-form {
-      background: white;
-      border-radius: 24px;
-      padding: 44px;
-      margin-top: 40px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-      border: 1px solid rgba(33,118,199,0.1);
-    }
-
-    .review-form h3 {
-      font-family: 'Tajawal', sans-serif;
-      font-size: 1.4rem;
-      font-weight: 800;
-      color: var(--text);
-      margin-bottom: 28px;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-bottom: 16px;
-    }
-
-    .form-group {
-      margin-bottom: 16px;
-    }
-
-    .form-group label {
-      display: block;
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 8px;
-    }
-
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
-      padding: 12px 16px;
-      border: 2px solid rgba(33,118,199,0.15);
-      border-radius: 12px;
-      font-family: 'Cairo', sans-serif;
-      font-size: 0.95rem;
-      color: var(--text);
-      transition: border-color 0.2s;
-      outline: none;
-      background: var(--off-white);
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus {
-      border-color: var(--blue);
-      background: white;
-    }
-
+    /* REVIEWS */
+    #reviews { background: var(--off-white); }
+    .review-form { background: white; border-radius: 24px; padding: 44px; margin-top: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border: 1px solid rgba(33,118,199,0.1); }
+    .review-form h3 { font-family: 'Tajawal', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--text); margin-bottom: 28px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: 0.9rem; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+    .form-group input, .form-group textarea { width: 100%; padding: 12px 16px; border: 2px solid rgba(33,118,199,0.15); border-radius: 12px; font-family: 'Cairo', sans-serif; font-size: 0.95rem; color: var(--text); transition: border-color 0.2s; outline: none; background: var(--off-white); }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--blue); background: white; }
     .form-group textarea { resize: vertical; min-height: 100px; }
-
-    .star-rating {
-      display: flex;
-      gap: 8px;
-      flex-direction: row-reverse;
-      justify-content: flex-end;
-      margin-bottom: 20px;
-    }
-
+    .star-rating { display: flex; gap: 8px; flex-direction: row-reverse; justify-content: flex-end; margin-bottom: 20px; }
     .star-rating input { display: none; }
-
-    .star-rating label {
-      font-size: 2rem;
-      color: #ddd;
-      cursor: pointer;
-      transition: color 0.2s;
-    }
-
-    .star-rating input:checked ~ label,
-    .star-rating label:hover,
-    .star-rating label:hover ~ label {
-      color: #FFC107;
-    }
-
-    .submit-review-btn {
-      background: linear-gradient(135deg, var(--blue), var(--blue-light));
-      color: white;
-      padding: 14px 36px;
-      border: none;
-      border-radius: 12px;
-      font-size: 1rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 6px 20px rgba(33,118,199,0.3);
-      font-family: 'Cairo', sans-serif;
-    }
-
+    .star-rating label { font-size: 2rem; color: #ddd; cursor: pointer; transition: color 0.2s; }
+    .star-rating input:checked ~ label, .star-rating label:hover, .star-rating label:hover ~ label { color: #FFC107; }
+    .submit-review-btn { background: linear-gradient(135deg, var(--blue), var(--blue-light)); color: white; padding: 14px 36px; border: none; border-radius: 12px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 6px 20px rgba(33,118,199,0.3); font-family: 'Cairo', sans-serif; }
     .submit-review-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(33,118,199,0.4); }
 
-    /* ===== FOOTER ===== */
-    footer {
-      background: var(--text);
-      color: white;
-      padding: 60px 20px 30px;
-      text-align: center;
-    }
-
+    /* FOOTER */
+    footer { background: var(--text); color: white; padding: 60px 20px 30px; text-align: center; }
     .footer-inner { max-width: 800px; margin: 0 auto; }
-
-    .footer-logo {
-      font-family: 'Tajawal', sans-serif;
-      font-size: 1.8rem;
-      font-weight: 900;
-      margin-bottom: 16px;
-    }
-
+    .footer-logo { font-family: 'Tajawal', sans-serif; font-size: 1.8rem; font-weight: 900; margin-bottom: 16px; }
     .footer-logo span { color: var(--sky); }
-
-    .footer-desc {
-      color: rgba(255,255,255,0.6);
-      font-size: 0.95rem;
-      line-height: 1.7;
-      margin-bottom: 30px;
-      max-width: 480px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .footer-socials {
-      display: flex;
-      justify-content: center;
-      gap: 14px;
-      margin-bottom: 30px;
-    }
-
-    .social-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 22px;
-      border-radius: 50px;
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 700;
-      transition: transform 0.2s;
-    }
-
+    .footer-desc { color: rgba(255,255,255,0.6); font-size: 0.95rem; line-height: 1.7; margin-bottom: 30px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .footer-transfer { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 18px 28px; margin-bottom: 28px; display: inline-block; }
+    .footer-transfer .ft-label { font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-bottom: 6px; }
+    .footer-transfer .ft-num { font-family: 'Tajawal', sans-serif; font-size: 1.5rem; font-weight: 900; color: var(--gold); letter-spacing: 2px; direction: ltr; display: block; }
+    .footer-socials { display: flex; justify-content: center; gap: 14px; margin-bottom: 30px; }
+    .social-btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 50px; text-decoration: none; font-size: 0.9rem; font-weight: 700; transition: transform 0.2s; }
     .social-btn:hover { transform: translateY(-2px); }
+    .social-btn.insta { background: linear-gradient(135deg, #E1306C, #FCAF45); color: white; }
+    .social-btn.wa { background: #25D366; color: white; }
+    .footer-line { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; color: rgba(255,255,255,0.4); font-size: 0.85rem; }
 
-    .social-btn.insta {
-      background: linear-gradient(135deg, #E1306C, #FCAF45);
-      color: white;
-    }
-
-    .social-btn.wa {
-      background: #25D366;
-      color: white;
-    }
-
-    .footer-line {
-      border-top: 1px solid rgba(255,255,255,0.1);
-      padding-top: 24px;
-      color: rgba(255,255,255,0.4);
-      font-size: 0.85rem;
-    }
-
-    /* ===== SUCCESS MESSAGE ===== */
-    .success-toast {
-      position: fixed;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%) translateY(100px);
-      background: #25D366;
-      color: white;
-      padding: 14px 28px;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 0.95rem;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
-      z-index: 999;
-      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-      white-space: nowrap;
-    }
-
+    /* TOAST */
+    .success-toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px); background: #25D366; color: white; padding: 14px 28px; border-radius: 50px; font-weight: 700; font-size: 0.95rem; box-shadow: 0 8px 30px rgba(0,0,0,0.2); z-index: 999; transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); white-space: nowrap; }
     .success-toast.show { transform: translateX(-50%) translateY(0); }
 
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 900px) {
-      .about-grid { grid-template-columns: 1fr; }
-      .targets-grid { grid-template-columns: repeat(3, 1fr); }
-      .donate-steps { grid-template-columns: 1fr; }
-      .reviews-grid { grid-template-columns: 1fr; }
-      .form-row { grid-template-columns: 1fr; }
-    }
-
-    @media (max-width: 600px) {
-      nav { padding: 12px 20px; }
-      .nav-links { display: none; }
-      .targets-grid { grid-template-columns: repeat(2, 1fr); }
-      .wa-box { padding: 28px 20px; }
-      .review-form { padding: 28px 20px; }
-    }
-
-    /* Dynamic reviews area */
+    /* DYNAMIC REVIEWS */
     #dynamic-reviews { display: flex; flex-direction: column; gap: 18px; margin-top: 20px; }
+    .dyn-review { background: white; border-radius: 18px; padding: 24px 26px; border: 1px solid rgba(33,118,199,0.1); box-shadow: 0 4px 16px rgba(0,0,0,0.05); animation: fadeUp 0.5s ease both; }
+    .no-reviews-msg { text-align: center; padding: 50px 20px; color: var(--text-light); font-size: 1rem; }
+    .no-reviews-msg .nr-icon { font-size: 3rem; display: block; margin-bottom: 14px; }
 
-    .dyn-review {
-      background: white;
-      border-radius: 18px;
-      padding: 24px 26px;
-      border: 1px solid rgba(33,118,199,0.1);
-      box-shadow: 0 4px 16px rgba(0,0,0,0.05);
-      animation: fadeUp 0.5s ease both;
-    }
+    /* ===== CHATBOT ===== */
+    .chatbot-bubble { position: fixed; bottom: 28px; left: 28px; z-index: 200; }
+    .chat-toggle-btn { width: 68px; height: 68px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--sky)); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.7rem; box-shadow: 0 8px 28px rgba(33,118,199,0.5); transition: transform 0.3s, box-shadow 0.3s; animation: chatPulse 3s ease-in-out infinite; }
+    @keyframes chatPulse { 0%,100%{box-shadow:0 8px 28px rgba(33,118,199,0.5)} 50%{box-shadow:0 8px 40px rgba(33,118,199,0.7), 0 0 0 10px rgba(33,118,199,0.08)} }
+    .chat-toggle-btn:hover { transform: scale(1.08); }
+    .chat-toggle-btn.open { animation: none; background: linear-gradient(135deg, #E53935, #EF5350); }
+    .chat-badge { position: absolute; top: -4px; right: -4px; width: 22px; height: 22px; background: var(--gold); border-radius: 50%; font-size: 0.68rem; font-weight: 900; color: var(--text); display: flex; align-items: center; justify-content: center; border: 2px solid white; }
+
+    .chat-window { position: absolute; bottom: 82px; left: 0; width: 380px; background: white; border-radius: 24px; box-shadow: 0 20px 70px rgba(0,0,0,0.22); overflow: hidden; transform-origin: bottom left; transform: scale(0.8) translateY(20px); opacity: 0; pointer-events: none; transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1); max-height: 560px; display: flex; flex-direction: column; }
+    .chat-window.open { transform: scale(1) translateY(0); opacity: 1; pointer-events: all; }
+
+    .chat-head { background: linear-gradient(135deg, var(--blue), var(--blue-light)); padding: 18px 20px; display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+    .chat-head .bot-avatar { width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; border: 2px solid rgba(255,255,255,0.3); }
+    .chat-head .bot-name { font-weight: 800; color: white; font-size: 1rem; }
+    .chat-head .bot-status { font-size: 0.75rem; color: rgba(255,255,255,0.75); display: flex; align-items: center; gap: 5px; margin-top: 2px; }
+    .chat-head .bot-status::before { content:''; width:7px; height:7px; background:#4cff8a; border-radius:50%; display:inline-block; animation: statusBlink 2s ease-in-out infinite; }
+    @keyframes statusBlink { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+    .chat-messages { flex: 1; overflow-y: auto; padding: 18px 16px; display: flex; flex-direction: column; gap: 12px; min-height: 280px; max-height: 340px; }
+    .chat-messages::-webkit-scrollbar { width: 4px; }
+    .chat-messages::-webkit-scrollbar-thumb { background: rgba(33,118,199,0.2); border-radius: 4px; }
+
+    .chat-msg { max-width: 88%; padding: 11px 15px; border-radius: 18px; font-size: 0.9rem; line-height: 1.65; animation: msgPop 0.3s ease both; }
+    @keyframes msgPop { from{opacity:0;transform:translateY(8px) scale(0.95)} to{opacity:1;transform:translateY(0) scale(1)} }
+    .chat-msg.bot { background: var(--off-white); color: var(--text); border-radius: 18px 18px 18px 4px; align-self: flex-start; border: 1px solid rgba(33,118,199,0.08); }
+    .chat-msg.user { background: linear-gradient(135deg, var(--blue), var(--blue-light)); color: white; border-radius: 18px 18px 4px 18px; align-self: flex-end; }
+    .chat-msg.typing { background: var(--off-white); align-self: flex-start; padding: 14px 18px; border: 1px solid rgba(33,118,199,0.08); }
+    .typing-dots { display: flex; gap: 5px; align-items: center; }
+    .typing-dots span { width: 7px; height: 7px; background: var(--text-light); border-radius: 50%; animation: dotBounce 1.2s ease-in-out infinite; }
+    .typing-dots span:nth-child(2){animation-delay:0.2s}
+    .typing-dots span:nth-child(3){animation-delay:0.4s}
+    @keyframes dotBounce { 0%,80%,100%{transform:translateY(0)} 40%{transform:translateY(-7px)} }
+
+    .quick-questions { display: flex; flex-wrap: wrap; gap: 7px; padding: 4px 16px 12px; flex-shrink: 0; }
+    .quick-q { padding: 7px 14px; background: rgba(33,118,199,0.07); border: 1px solid rgba(33,118,199,0.18); border-radius: 20px; font-size: 0.8rem; font-weight: 600; color: var(--blue); cursor: pointer; transition: all 0.2s; font-family: 'Cairo', sans-serif; }
+    .quick-q:hover { background: rgba(33,118,199,0.15); transform: translateY(-1px); }
+
+    .chat-input-row { display: flex; gap: 8px; padding: 12px 16px; border-top: 1px solid rgba(0,0,0,0.06); flex-shrink: 0; background: white; }
+    .chat-input { flex: 1; padding: 10px 14px; border: 2px solid rgba(33,118,199,0.15); border-radius: 12px; font-family: 'Cairo', sans-serif; font-size: 0.9rem; outline: none; transition: border-color 0.2s; color: var(--text); }
+    .chat-input:focus { border-color: var(--blue); }
+    .chat-send-btn { width: 42px; height: 42px; border-radius: 12px; background: linear-gradient(135deg, var(--blue), var(--blue-light)); border: none; color: white; font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: transform 0.2s, box-shadow 0.2s; flex-shrink: 0; }
+    .chat-send-btn:hover { transform: scale(1.08); box-shadow: 0 4px 14px rgba(33,118,199,0.4); }
+    .chat-send-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+    /* AI badge */
+    .ai-badge { display: inline-flex; align-items: center; gap: 5px; background: linear-gradient(135deg, rgba(33,118,199,0.1), rgba(90,191,238,0.1)); border: 1px solid rgba(33,118,199,0.2); border-radius: 20px; padding: 3px 10px; font-size: 0.72rem; font-weight: 700; color: var(--blue); margin-top: 6px; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) { .about-grid{grid-template-columns:1fr} .targets-grid{grid-template-columns:repeat(3,1fr)} .donate-steps{grid-template-columns:1fr} .form-row{grid-template-columns:1fr} }
+    @media (max-width: 600px) { nav{padding:12px 20px} .nav-links{display:none} .targets-grid{grid-template-columns:repeat(2,1fr)} .wa-box{padding:28px 20px} .review-form{padding:28px 20px} .transfer-banner{flex-direction:column;text-align:center} .chat-window{width:310px} .chatbot-bubble{bottom:18px;left:18px} }
   </style>
 </head>
 <body>
@@ -920,12 +278,8 @@
 <!-- HERO -->
 <section class="hero">
   <div class="bubbles">
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
+    <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
+    <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
   </div>
   <div class="hero-content">
     <div class="hero-badge">🌊 نوصل الخير بيدك إلى من يحتاجه</div>
@@ -953,18 +307,18 @@
           <p>نحن لسنا شركة مياه، بل فريق متطوع مستقل نقوم بدور الوسيط الأمين بينك وبين من يحتاج المياه.</p>
         </div>
         <div class="stats-row">
-          <div class="stat-box">
-            <span class="num">١٠٠%</span>
-            <span class="label">شفافية وتوثيق</span>
+          <div class="stat-box"><span class="num">١٠٠%</span><span class="label">شفافية وتوثيق</span></div>
+          <div class="stat-box"><span class="num">١ ر.ع</span><span class="label">سعر الكرتون شاملًا</span></div>
+          <div class="stat-box"><span class="num">٥</span><span class="label">فئات مستهدفة</span></div>
+        </div>
+        <div class="transfer-banner">
+          <div class="t-icon">📲</div>
+          <div class="t-info">
+            <div class="t-label">رقم التحويل / واتساب</div>
+            <div class="t-number">76930657</div>
+            <div class="t-note">يُرجى إرفاق الإيصال بعد التحويل</div>
           </div>
-          <div class="stat-box">
-            <span class="num">١ ر.ع</span>
-            <span class="label">سعر الكرتون شاملًا</span>
-          </div>
-          <div class="stat-box">
-            <span class="num">٥</span>
-            <span class="label">فئات مستهدفة</span>
-          </div>
+          <button class="copy-btn" onclick="copyNumber(this)">نسخ الرقم 📋</button>
         </div>
       </div>
       <div class="about-text">
@@ -972,22 +326,10 @@
         <h2 class="section-title">فريق <span>زاد الخير</span></h2>
         <p class="section-sub">نحن فريق من المناديب المتطوعين نعمل بشكل مستقل دون أي ارتباط بأي شركة مياه. مهمتنا الوحيدة هي إيصال تبرعاتكم إلى مستحقيها بكل أمانة وشفافية.</p>
         <ul class="features">
-          <li>
-            <span class="icon">✅</span>
-            <span>نقوم بتوصيل المياه نيابةً عنكم إلى المستحقين في أسرع وقت</span>
-          </li>
-          <li>
-            <span class="icon">📸</span>
-            <span>نوثّق كل عملية توصيل بالصور والمقاطع ونُرسل لك الدليل مباشرة</span>
-          </li>
-          <li>
-            <span class="icon">🔒</span>
-            <span>لا علاقة لنا بأي شركة مياه — نحن مستقلون وأُمناء بالكامل</span>
-          </li>
-          <li>
-            <span class="icon">❤️</span>
-            <span>نعمل بدافع العطاء وحب الخير لمجتمعنا</span>
-          </li>
+          <li><span class="icon">✅</span><span>نقوم بتوصيل المياه نيابةً عنكم إلى المستحقين في أسرع وقت</span></li>
+          <li><span class="icon">📸</span><span>نوثّق كل عملية توصيل بالصور والمقاطع ونُرسل لك الدليل مباشرة</span></li>
+          <li><span class="icon">🔒</span><span>لا علاقة لنا بأي شركة مياه — نحن مستقلون وأُمناء بالكامل</span></li>
+          <li><span class="icon">❤️</span><span>نعمل بدافع العطاء وحب الخير لمجتمعنا</span></li>
         </ul>
       </div>
     </div>
@@ -1005,21 +347,21 @@
         <div class="step-num">١</div>
         <span class="step-icon">📦</span>
         <h3>حدد الكمية</h3>
-        <p>اختر عدد كراتين المياه التي تريد التبرع بها حسب قدرتك</p>
-        <span class="price-highlight">الكرتون = ١ ريال فقط</span>
+        <p>اختر عدد كراتين المياه أو نسخ المصاحف التي تريد التبرع بها حسب قدرتك</p>
+        <span class="price-highlight">الكرتون = ١ ريال / المصحف = ٢ ريال</span>
       </div>
       <div class="step-card">
         <div class="step-num">٢</div>
         <span class="step-icon">💸</span>
         <h3>حوّل المبلغ</h3>
-        <p>قم بتحويل المبلغ عبر الواتساب أو أي وسيلة دفع متاحة مع إرفاق الإيصال</p>
+        <p>قم بتحويل المبلغ على الرقم <strong>76930657</strong> مع إرفاق الإيصال عبر واتساب</p>
         <span class="price-highlight">شامل التوصيل الكامل</span>
       </div>
       <div class="step-card">
         <div class="step-num">٣</div>
         <span class="step-icon">📸</span>
         <h3>نُوصل ونُوثّق</h3>
-        <p>نقوم بتوصيل المياه للمستحقين ونُرسل لك توثيقاً كاملاً بالصور والمقاطع</p>
+        <p>نقوم بتوصيل التبرع للمستحقين ونُرسل لك توثيقاً كاملاً بالصور والمقاطع</p>
         <span class="price-highlight">ضمان الوصول</span>
       </div>
     </div>
@@ -1030,29 +372,14 @@
 <section id="targets">
   <div class="container">
     <div class="section-tag">🎯 الفئات المستهدفة</div>
-    <h2 class="section-title">نوصّل المياه <span>لمن يحتاجها</span></h2>
+    <h2 class="section-title">نوصّل المياه والمصاحف <span>لمن يحتاجها</span></h2>
     <p class="section-sub">تبرعاتك تصل إلى هذه الفئات التي نخدمها بأولوية ومحبة</p>
     <div class="targets-grid">
-      <div class="target-card">
-        <span class="t-icon">🕌</span>
-        <h4>المساجد</h4>
-      </div>
-      <div class="target-card">
-        <span class="t-icon">🏥</span>
-        <h4>المستشفيات</h4>
-      </div>
-      <div class="target-card">
-        <span class="t-icon">👷</span>
-        <h4>العمال</h4>
-      </div>
-      <div class="target-card">
-        <span class="t-icon">🏠</span>
-        <h4>الأسر المعسرة</h4>
-      </div>
-      <div class="target-card">
-        <span class="t-icon">🌳</span>
-        <h4>الأماكن العامة</h4>
-      </div>
+      <div class="target-card"><span class="t-icon">🕌</span><h4>المساجد</h4></div>
+      <div class="target-card"><span class="t-icon">🏥</span><h4>المستشفيات</h4></div>
+      <div class="target-card"><span class="t-icon">👷</span><h4>العمال</h4></div>
+      <div class="target-card"><span class="t-icon">🏠</span><h4>الأسر المعسرة</h4></div>
+      <div class="target-card"><span class="t-icon">🌳</span><h4>الأماكن العامة</h4></div>
     </div>
   </div>
 </section>
@@ -1062,25 +389,45 @@
   <div class="container" style="text-align:center;">
     <div class="section-tag">📲 تبرع الآن</div>
     <h2 class="section-title">أرسل تبرعك عبر <span>واتساب</span></h2>
-    <p class="section-sub" style="margin:0 auto;">حدد الكمية وسنُرسل لك رسالة جاهزة مباشرةً إلى واتسابنا</p>
-
+    <p class="section-sub" style="margin:0 auto;">اختر نوع تبرعك وسنُرسل لك رسالة جاهزة مباشرةً إلى واتسابنا</p>
+    <div class="donation-tabs">
+      <button class="tab-btn water active" onclick="switchTab('water')">💧 سقيا الماء</button>
+      <button class="tab-btn quran" onclick="switchTab('quran')">📖 المصاحف</button>
+    </div>
     <div class="wa-box">
-      <label>🧊 عدد كراتين المياه</label>
-      <div class="qty-selector">
-        <button class="qty-btn" onclick="changeQty(-1)">−</button>
-        <input class="qty-input" type="number" id="qtyInput" value="10" min="1" max="9999" oninput="updatePrice()">
-        <button class="qty-btn" onclick="changeQty(1)">+</button>
+      <div class="wa-panel active" id="panel-water">
+        <label>🧊 عدد كراتين المياه</label>
+        <div class="qty-selector">
+          <button class="qty-btn" onclick="changeQty('water', -1)">−</button>
+          <input class="qty-input" type="number" id="waterQty" value="10" min="1" max="9999" oninput="updateWaterPrice()">
+          <button class="qty-btn" onclick="changeQty('water', 1)">+</button>
+        </div>
+        <div class="price-preview">
+          <span class="label">💰 المبلغ الإجمالي (شامل التوصيل)</span>
+          <span class="total" id="waterTotal">١٠ ريال عُماني</span>
+        </div>
+        <button class="wa-send-btn" onclick="sendWaterWhatsApp()">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          إرسال طلب سقيا الماء
+        </button>
       </div>
-
-      <div class="price-preview">
-        <span class="label">💰 المبلغ الإجمالي (شامل التوصيل)</span>
-        <span class="total" id="totalPrice">١٠ ريال عُماني</span>
+      <div class="wa-panel" id="panel-quran">
+        <div class="quran-info-box">📖 سعر المصحف الواحد: <strong>٢ ريال عُماني</strong> شامل التوصيل — نوصّل المصاحف للمساجد والأسر المحتاجة</div>
+        <label>📚 عدد المصاحف</label>
+        <div class="qty-selector quran-style">
+          <button class="qty-btn green" onclick="changeQty('quran', -1)">−</button>
+          <input class="qty-input" type="number" id="quranQty" value="5" min="1" max="9999" oninput="updateQuranPrice()">
+          <button class="qty-btn green" onclick="changeQty('quran', 1)">+</button>
+        </div>
+        <div class="price-preview green-bg">
+          <span class="label">💰 المبلغ الإجمالي (شامل التوصيل)</span>
+          <span class="total green" id="quranTotal">١٠ ريال عُماني</span>
+        </div>
+        <button class="wa-send-btn" onclick="sendQuranWhatsApp()">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          إرسال طلب التبرع بالمصاحف
+        </button>
       </div>
-
-      <button class="wa-send-btn" onclick="sendToWhatsApp()">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-        إرسال التبرع عبر واتساب
-      </button>
     </div>
   </div>
 </section>
@@ -1090,48 +437,13 @@
   <div class="container">
     <div class="section-tag">⭐ التقييمات</div>
     <h2 class="section-title">ماذا يقول <span>المتبرعون</span></h2>
-    <p class="section-sub">آراء حقيقية من أشخاص وثقوا بفريق زاد الخير</p>
-
-    <div class="reviews-grid">
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">تجربة رائعة جداً! أرسلت التبرع وخلال ساعات وصلتني صور التوصيل. فريق أمين وسريع، أنصح الجميع بدعمهم.</p>
-        <div class="reviewer">
-          <div class="reviewer-avatar">م</div>
-          <div>
-            <div class="reviewer-name">محمد العُماني</div>
-            <div class="reviewer-date">أبريل 2025</div>
-          </div>
-        </div>
-      </div>
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">ماشاء الله على الفريق، السرعة والأمانة موجودة. التوثيق بالصور خلاني مطمن إن تبرعي وصل لصاحبه.</p>
-        <div class="reviewer">
-          <div class="reviewer-avatar">ف</div>
-          <div>
-            <div class="reviewer-name">فاطمة السعيدية</div>
-            <div class="reviewer-date">مارس 2025</div>
-          </div>
-        </div>
-      </div>
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">بريال الواحد وصلت الكرتون مع التوصيل! مبادرة إنسانية رائعة وفريق محترف. جزاهم الله خيراً.</p>
-        <div class="reviewer">
-          <div class="reviewer-avatar">ع</div>
-          <div>
-            <div class="reviewer-name">عبدالله الحارثي</div>
-            <div class="reviewer-date">فبراير 2025</div>
-          </div>
-        </div>
+    <p class="section-sub">شاركنا تجربتك بعد تبرعك مع فريق زاد الخير</p>
+    <div id="dynamic-reviews">
+      <div class="no-reviews-msg">
+        <span class="nr-icon">💬</span>
+        <p>لا توجد تقييمات بعد — كن أول من يشارك تجربته!</p>
       </div>
     </div>
-
-    <!-- Dynamic reviews -->
-    <div id="dynamic-reviews"></div>
-
-    <!-- Review Form -->
     <div class="review-form">
       <h3>💬 شاركنا تجربتك</h3>
       <div class="form-row">
@@ -1163,7 +475,11 @@
 <footer>
   <div class="footer-inner">
     <div class="footer-logo">💧 زاد <span>الخير</span></div>
-    <p class="footer-desc">نحن مناديب أُمناء نوصّل تبرعاتكم من المياه إلى من يحتاجها بكل شفافية وتوثيق. ليس لدينا علاقة بأي شركة مياه.</p>
+    <p class="footer-desc">نحن مناديب أُمناء نوصّل تبرعاتكم من المياه والمصاحف إلى من يحتاجها بكل شفافية وتوثيق.</p>
+    <div class="footer-transfer">
+      <div class="ft-label">📲 رقم التحويل والتواصل</div>
+      <span class="ft-num">76930657</span>
+    </div>
     <div class="footer-socials">
       <a href="https://www.instagram.com/zad_alkhair25" target="_blank" class="social-btn insta">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
@@ -1178,86 +494,272 @@
   </div>
 </footer>
 
+<!-- CHATBOT BUBBLE -->
+<div class="chatbot-bubble">
+  <button class="chat-toggle-btn" id="chatToggle" onclick="toggleChat()">
+    <span id="chatIcon">🤖</span>
+  </button>
+  <div class="chat-badge" id="chatBadge">1</div>
+
+  <div class="chat-window" id="chatWindow">
+    <div class="chat-head">
+      <div class="bot-avatar">🤖</div>
+      <div class="bot-info">
+        <div class="bot-name">مساعد زاد الخير الذكي</div>
+        <div class="bot-status">يعمل بالذكاء الاصطناعي</div>
+      </div>
+    </div>
+
+    <div class="chat-messages" id="chatMessages">
+      <div class="chat-msg bot">
+        السلام عليكم! 👋 أنا مساعد زاد الخير الذكي، أنا هنا للإجابة على أي سؤال عن التبرع، الأسعار، أو خدماتنا. تفضل! 🌊
+        <div class="ai-badge">✨ مدعوم بالذكاء الاصطناعي</div>
+      </div>
+    </div>
+
+    <div class="quick-questions" id="quickQuestions">
+      <button class="quick-q" onclick="sendQuick('كيف أتبرع؟')">كيف أتبرع؟</button>
+      <button class="quick-q" onclick="sendQuick('كم سعر الكرتون؟')">سعر الكرتون؟</button>
+      <button class="quick-q" onclick="sendQuick('من يستفيد من التبرعات؟')">من يستفيد؟</button>
+      <button class="quick-q" onclick="sendQuick('هل التوصيل موثّق؟')">هل التوصيل موثّق؟</button>
+      <button class="quick-q" onclick="sendQuick('كم سعر المصحف؟')">سعر المصحف؟</button>
+      <button class="quick-q" onclick="sendQuick('كيف أتواصل مع الفريق؟')">كيف أتواصل؟</button>
+    </div>
+
+    <div class="chat-input-row">
+      <input class="chat-input" type="text" id="chatInput" placeholder="اكتب سؤالك هنا..." onkeydown="if(event.key==='Enter') sendChat()">
+      <button class="chat-send-btn" id="sendBtn" onclick="sendChat()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
 <!-- Toast -->
-<div class="success-toast" id="toast">✅ تم إرسال رسالتك بنجاح!</div>
+<div class="success-toast" id="toast">✅ تم بنجاح!</div>
 
 <script>
-  // QTY LOGIC
-  function changeQty(delta) {
-    const input = document.getElementById('qtyInput');
-    let val = parseInt(input.value) || 1;
-    val = Math.max(1, val + delta);
+  const PHONE = '96876930657';
+
+  // TABS
+  function switchTab(tab) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.wa-panel').forEach(p => p.classList.remove('active'));
+    document.querySelector('.tab-btn.' + tab).classList.add('active');
+    document.getElementById('panel-' + tab).classList.add('active');
+  }
+
+  // QTY
+  function changeQty(type, delta) {
+    const id = type === 'water' ? 'waterQty' : 'quranQty';
+    const input = document.getElementById(id);
+    let val = Math.max(1, (parseInt(input.value) || 1) + delta);
     input.value = val;
-    updatePrice();
+    type === 'water' ? updateWaterPrice() : updateQuranPrice();
   }
 
-  function updatePrice() {
-    const qty = parseInt(document.getElementById('qtyInput').value) || 1;
-    const total = qty;
-    const arabic = total.toLocaleString('ar-OM');
-    document.getElementById('totalPrice').textContent = arabic + ' ريال عُماني';
+  function updateWaterPrice() {
+    const qty = parseInt(document.getElementById('waterQty').value) || 1;
+    document.getElementById('waterTotal').textContent = qty.toLocaleString('ar-OM') + ' ريال عُماني';
   }
 
-  function sendToWhatsApp() {
-    const qty = parseInt(document.getElementById('qtyInput').value) || 1;
-    const total = qty;
-    const msg = `السلام عليكم فريق زاد الخير 💧\n\nأرغب في التبرع بـ *${qty} كرتون مياه* بمبلغ *${total} ريال عُماني* شامل التوصيل.\n\nأرجو إفادتي بتفاصيل التحويل وجزاكم الله خيراً 🤍`;
-    const phone = '96876930657';
-    const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
-    window.open(url, '_blank');
+  function updateQuranPrice() {
+    const qty = parseInt(document.getElementById('quranQty').value) || 1;
+    document.getElementById('quranTotal').textContent = (qty * 2).toLocaleString('ar-OM') + ' ريال عُماني';
   }
 
-  // REVIEW LOGIC
-  const dynamicReviews = [];
+  // WHATSAPP
+  function sendWaterWhatsApp() {
+    const qty = parseInt(document.getElementById('waterQty').value) || 1;
+    const msg = `السلام عليكم فريق زاد الخير 💧\n\nأرغب في التبرع بـ *${qty} كرتون مياه* بمبلغ *${qty} ريال عُماني* شامل التوصيل.\n\nأرجو إفادتي بتفاصيل التحويل وجزاكم الله خيراً 🤍`;
+    window.open(`https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`, '_blank');
+  }
 
+  function sendQuranWhatsApp() {
+    const qty = parseInt(document.getElementById('quranQty').value) || 1;
+    const msg = `السلام عليكم فريق زاد الخير 📖\n\nأرغب في التبرع بـ *${qty} مصحف* بمبلغ *${qty * 2} ريال عُماني* شامل التوصيل.\n\nأرجو إفادتي بتفاصيل التحويل وجزاكم الله خيراً 🤍`;
+    window.open(`https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`, '_blank');
+  }
+
+  // COPY
+  function copyNumber(btn) {
+    navigator.clipboard.writeText('76930657').then(() => {
+      btn.textContent = '✅ تم النسخ!';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = 'نسخ الرقم 📋'; btn.classList.remove('copied'); }, 2500);
+    });
+  }
+
+  // REVIEWS
+  let hasRealReviews = false;
   function submitReview() {
     const name = document.getElementById('reviewName').value.trim();
     const text = document.getElementById('reviewText').value.trim();
     const ratingEl = document.querySelector('input[name="rating"]:checked');
     const rating = ratingEl ? parseInt(ratingEl.value) : 0;
-
     if (!name) { showToast('❗ من فضلك أدخل اسمك'); return; }
     if (!text) { showToast('❗ من فضلك اكتب تعليقك'); return; }
     if (!rating) { showToast('❗ من فضلك اختر تقييمك'); return; }
-
-    const stars = '★'.repeat(rating) + '☆'.repeat(5 - rating);
-    const initials = name.charAt(0);
-    const now = new Date();
-    const dateStr = now.toLocaleDateString('ar-SA', { year: 'numeric', month: 'long' });
-
+    if (!hasRealReviews) { document.getElementById('dynamic-reviews').innerHTML = ''; hasRealReviews = true; }
     const card = document.createElement('div');
     card.className = 'dyn-review';
-    card.innerHTML = `
-      <div class="review-stars" style="color:#FFC107;font-size:1.1rem;margin-bottom:10px;">${stars}</div>
-      <p class="review-text">${text}</p>
-      <div class="reviewer">
-        <div class="reviewer-avatar">${initials}</div>
-        <div>
-          <div class="reviewer-name">${name}</div>
-          <div class="reviewer-date">${dateStr}</div>
-        </div>
-      </div>`;
-
+    const stars = '★'.repeat(rating) + '☆'.repeat(5 - rating);
+    const dateStr = new Date().toLocaleDateString('ar-SA', { year: 'numeric', month: 'long' });
+    card.innerHTML = `<div style="color:#FFC107;font-size:1.1rem;margin-bottom:10px;">${stars}</div><p style="font-size:0.95rem;color:var(--text);line-height:1.7;margin-bottom:18px;">${text}</p><div style="display:flex;align-items:center;gap:12px;"><div style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--sky));display:flex;align-items:center;justify-content:center;color:white;font-weight:800;">${name.charAt(0)}</div><div><div style="font-weight:700;">${name}</div><div style="font-size:0.8rem;color:var(--text-light);">${dateStr}</div></div></div>`;
     document.getElementById('dynamic-reviews').prepend(card);
-
-    // Reset
     document.getElementById('reviewName').value = '';
     document.getElementById('reviewText').value = '';
     if (ratingEl) ratingEl.checked = false;
-
-    showToast('✅ شكراً! تم إرسال تقييمك بنجاح');
+    showToast('✅ شكراً! تم إرسال تقييمك');
   }
 
   function showToast(msg) {
-    const toast = document.getElementById('toast');
-    toast.textContent = msg;
-    toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 3000);
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
   }
 
-  // Init
-  updatePrice();
-</script>
+  // ===== CHATBOT WITH CLAUDE AI =====
+  let chatOpen = false;
+  const chatHistory = [];
+  let isBotTyping = false;
 
+  const SYSTEM_PROMPT = `أنت مساعد ذكي ومتخصص لفريق "زاد الخير"، وهو فريق متطوع عُماني يقوم بتوصيل المياه والمصاحف إلى المحتاجين بكل أمانة وشفافية.
+
+المعلومات الكاملة التي يجب أن تعرفها بدقة:
+
+📦 الأسعار والخدمات:
+- كرتون المياه: ١ ريال عُماني شامل التوصيل الكامل
+- المصحف الكريم: ٢ ريال عُماني شامل التوصيل
+- لا توجد رسوم إضافية أو خفية
+
+📲 معلومات التواصل:
+- رقم التحويل والواتساب: 76930657
+- رقم واتساب كامل: 96876930657
+- حساب انستاغرام: @zad_alkhair25
+
+🎯 الفئات المستفيدة:
+- المساجد (توصيل مياه ومصاحف)
+- المستشفيات
+- العمال
+- الأسر المعسرة
+- الأماكن العامة
+
+📋 طريقة التبرع (3 خطوات):
+1. تحديد الكمية المطلوبة (كراتين مياه أو مصاحف)
+2. تحويل المبلغ على الرقم 76930657 مع إرفاق الإيصال عبر واتساب
+3. الفريق يتكفل بالتوصيل ويُرسل توثيقاً كاملاً بالصور والمقاطع
+
+✅ مميزات الفريق:
+- توثيق كامل لكل عملية توصيل بالصور والمقاطع
+- الفريق مستقل تماماً ولا علاقة له بأي شركة مياه
+- شفافية ١٠٠٪ في التعامل
+- يعمل بدافع العطاء وحب الخير للمجتمع العُماني
+
+أجب دائماً بالعربية بأسلوب ودود ومختصر وواضح. استخدم الإيموجي باعتدال. إذا سُئلت عن شيء لا تعرفه، اقترح التواصل مباشرة مع الفريق عبر واتساب 76930657. لا تختلق معلومات غير موجودة.`;
+
+  function toggleChat() {
+    chatOpen = !chatOpen;
+    document.getElementById('chatWindow').classList.toggle('open', chatOpen);
+    document.getElementById('chatToggle').classList.toggle('open', chatOpen);
+    document.getElementById('chatIcon').textContent = chatOpen ? '✕' : '🤖';
+    if (chatOpen) {
+      document.getElementById('chatBadge').style.display = 'none';
+      setTimeout(() => document.getElementById('chatInput').focus(), 350);
+    }
+  }
+
+  function sendQuick(text) {
+    document.getElementById('quickQuestions').style.display = 'none';
+    processUserMessage(text);
+  }
+
+  function sendChat() {
+    if (isBotTyping) return;
+    const input = document.getElementById('chatInput');
+    const text = input.value.trim();
+    if (!text) return;
+    input.value = '';
+    processUserMessage(text);
+  }
+
+  function processUserMessage(text) {
+    appendUserMsg(text);
+    chatHistory.push({ role: 'user', content: text });
+    callClaudeAPI();
+  }
+
+  function appendUserMsg(text) {
+    const msgs = document.getElementById('chatMessages');
+    const div = document.createElement('div');
+    div.className = 'chat-msg user';
+    div.textContent = text;
+    msgs.appendChild(div);
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  function appendBotMsg(text) {
+    const msgs = document.getElementById('chatMessages');
+    const typing = document.getElementById('typingIndicator');
+    if (typing) typing.remove();
+    const div = document.createElement('div');
+    div.className = 'chat-msg bot';
+    div.textContent = text;
+    msgs.appendChild(div);
+    msgs.scrollTop = msgs.scrollHeight;
+    chatHistory.push({ role: 'assistant', content: text });
+  }
+
+  function showTyping() {
+    const msgs = document.getElementById('chatMessages');
+    const div = document.createElement('div');
+    div.className = 'chat-msg typing';
+    div.id = 'typingIndicator';
+    div.innerHTML = '<div class="typing-dots"><span></span><span></span><span></span></div>';
+    msgs.appendChild(div);
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  async function callClaudeAPI() {
+    isBotTyping = true;
+    const sendBtn = document.getElementById('sendBtn');
+    const chatInput = document.getElementById('chatInput');
+    sendBtn.disabled = true;
+    chatInput.disabled = true;
+    showTyping();
+
+    try {
+      const response = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-20250514',
+          max_tokens: 1000,
+          system: SYSTEM_PROMPT,
+          messages: chatHistory.slice(-12)
+        })
+      });
+
+      if (!response.ok) throw new Error('API error');
+      const data = await response.json();
+      const reply = data.content?.[0]?.text || 'عذراً، لم أتمكن من الإجابة. تواصل معنا على واتساب: 76930657 🤍';
+      appendBotMsg(reply);
+    } catch (e) {
+      const typing = document.getElementById('typingIndicator');
+      if (typing) typing.remove();
+      appendBotMsg('عذراً، حدث خطأ مؤقت. يمكنك التواصل معنا مباشرة عبر واتساب: 76930657 🤍');
+    } finally {
+      isBotTyping = false;
+      sendBtn.disabled = false;
+      chatInput.disabled = false;
+      chatInput.focus();
+    }
+  }
+
+  // INIT
+  updateWaterPrice();
+  updateQuranPrice();
+</script>
 </body>
 </html>
